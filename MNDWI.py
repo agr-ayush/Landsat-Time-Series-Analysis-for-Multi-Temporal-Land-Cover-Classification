@@ -3,10 +3,11 @@
 
 # In[57]:
 
+import gdal
+import numpy as np
 
-def MNDWI(mndwi_input_band4, mndwi_input_band5, path):
-    file1 = gdal.Open(str(mndwi_input_band4))
-    file2 = gdal.Open(str(mndwi_input_band5))
+    file1 = gdal.Open(str(path of swir band))
+    file2 = gdal.Open(str(path of green band))
     file1 = file1.ReadAsArray()
     file2 = file1.ReadAsArray()
     a,b = file1.shape
@@ -26,7 +27,7 @@ for i in range(a):
 # In[61]:
 
 
-inRaster = str(mndwi_input_band4)
+inRaster = str(path of green band)
 inDS=gdal.Open(inRaster,1)
 geoTransform = inDS.GetGeoTransform()
 band=inDS.GetRasterBand(1)
@@ -38,7 +39,7 @@ proj = inDS.GetProjection()
 # In[62]:
 
 
-outRaster =  r'E:\Internships\ISRO\Cities\delhi\Delhi 2017\LC081460402017120201T1-SC20171224010342\MNDWI.tif'
+outRaster =  r'path to store the mndwi file'
 driver=inDS.GetDriver()
 outDS = driver.Create(outRaster, b,a, 1,datatype)
 geoTransform = inDS.GetGeoTransform()
