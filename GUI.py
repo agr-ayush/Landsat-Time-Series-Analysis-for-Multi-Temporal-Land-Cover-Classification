@@ -1,4 +1,5 @@
-
+#GUI to ease the process
+# The input to be provided is the directory location where all the zips from landsat are present.
 # coding: utf-8
 
 # In[81]:
