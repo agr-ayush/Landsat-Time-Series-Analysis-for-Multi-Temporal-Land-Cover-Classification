@@ -4,11 +4,10 @@
 # In[ ]:
 
 
-def NDVI(ndvi_input_band4, ndvi_input_band5, ndvi_path, c):
-    from osgeo import gdal, gdal_array
+from osgeo import gdal, gdal_array
 
-    file1 = gdal.Open(str(ndvi_input_band4))
-    file2 = gdal.Open(str(ndvi_input_band5))
+    file1 = gdal.Open(str(path of green band))
+    file2 = gdal.Open(str(path of NIR band))
 
 
     file1 = file1.ReadAsArray()
@@ -36,7 +35,7 @@ for i in range(a):
 # In[58]:
 
 
-inRaster = str(ndvi_input_band5)
+inRaster = str(path of green band)
 inDS=gdal.Open(inRaster,1)
 geoTransform = inDS.GetGeoTransform()
 band=inDS.GetRasterBand(1)
@@ -47,7 +46,7 @@ proj = inDS.GetProjection()
 # In[59]:
 
 
-outRaster = str(ndvi_path + "\NDVI"+ c + ".tif")
+outRaster = str('path to store the NDVI file')
 driver=inDS.GetDriver()
 outDS = driver.Create(outRaster, b,a, 1,datatype)
 geoTransform = inDS.GetGeoTransform()
@@ -61,6 +60,5 @@ proj = inDS.GetProjection()
 outDS.SetProjection(proj)
 outBand = outDS.GetRasterBand(1)
 outBand.WriteArray(final_arr,0,0)
-#data is the output array to written in tiff file
 outDS=None
 
