@@ -13,8 +13,8 @@ import pickle
 # In[2]:
 
 
-ds_input = gdal.Open(r"E:\Internships\ISRO\Dataset3\Training\train_input_b.tif")
-ds_output = gdal.Open(r"E:\Internships\ISRO\Dataset3\Training\train_output_b.tif")
+ds_input = gdal.Open(r"path of input train image")
+ds_output = gdal.Open(r"path of output train image")
 
 input_imgarr = ds_input.ReadAsArray()
 output_imgarr = ds_output.ReadAsArray()
@@ -102,20 +102,20 @@ print('Our OOB prediction of accuracy is: {oob}%'.format(oob=rf.oob_score_ * 100
 
 ######Save Model###########
 from sklearn.externals import joblib
-joblib.dump(rf, 'E:\Internships\ISRO\Dataset3\LandCoverModel.pkl') 
+joblib.dump(rf, 'path to save model') 
 
 
 # In[ ]:
 
 
 ########Load Model###############
-rf = joblib.load('E:\Internships\ISRO\Dataset3\LandCoverModel.pkl') 
+rf = joblib.load('path where model is stored') 
 
 
 # In[14]:
 
 
-predict_arr = gdal.Open(r"E:\Internships\ISRO\Dataset3\Testing\test_input_b.tif")
+predict_arr = gdal.Open(r"path of test image")
 
 
 # In[15]:
@@ -155,7 +155,7 @@ a,b
 # In[19]:
 
 
-inRaster=r'E:\Internships\ISRO\Dataset3\Training\train_output_b.tif'
+inRaster=r'path of output train image'
 inDS=gdal.Open(inRaster,1)
 print(inDS)
 geoTransform = inDS.GetGeoTransform()
@@ -167,7 +167,7 @@ proj = inDS.GetProjection()
 # In[20]:
 
 
-outRaster=r'E:\\Internships\\ISRO\\Dataset3\\Testing\\test_output_b.tif'
+outRaster=r'path for output test image'
 driver=inDS.GetDriver()
 outDS = driver.Create(outRaster , b , a , 1 , datatype)
 geoTransform = inDS.GetGeoTransform()
